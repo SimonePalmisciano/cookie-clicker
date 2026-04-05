@@ -64,12 +64,25 @@ NAVBAR
 }
 
 /************************
+        MAIN
+************************/
+
+main {
+    position: relative;
+    z-index: 10;
+}
+
+/************************
         IMG-BISCOTTO
 ************************/
 
+figure {
+    margin: 0;
+}
+
 #biscottoGiganteClick {
     margin: 0 auto;
-    max-width: 50%;
+    max-width: 40%;
     cursor: pointer;
 }
 
