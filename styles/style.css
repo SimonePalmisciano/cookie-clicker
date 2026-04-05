@@ -1,0 +1,88 @@
+/************************
+        CSS RESET
+************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/************************
+        BODY
+************************/
+
+body {
+    background-color: rgb(251, 141, 23);
+}
+
+/************************
+        UTILITY
+************************/
+
+:root {
+    --bs-tertiary-bg-rgb: rgb(255, 132, 0);
+}
+
+
+.cinzel-font {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.jacquard-24-regular {
+    font-family: "Jacquard 24", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/************************
+NAVBAR
+************************/
+
+.navbar-brand {
+    width: 50px;
+}
+
+.navbar {
+    border-bottom: 1px solid;
+}
+
+/************************
+        IMG-BISCOTTO
+************************/
+
+#biscottoGiganteClick {
+    margin: 0 auto;
+    max-width: 50%;
+    cursor: pointer;
+}
+
+#biscottoGiganteClick:active {
+    transform: translate(-0px, -4px);
+    transition: all 0.2s;
+}
+
+/************************
+        COUNTER
+************************/
+
+#biscottoCounter {
+    font-size: 40px;
+    color: white;
+}
