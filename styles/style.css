@@ -86,3 +86,37 @@ NAVBAR
     font-size: 40px;
     color: white;
 }
+
+
+/* AGGIUNTO CON IA */
+/************************
+    CASCATA BISCOTTI
+************************/
+.cascata-biscotti-container {
+    position: fixed;
+    inset: 0;              /* top:0; right:0; bottom:0; left:0 */
+    pointer-events: none;  /* non blocca i click sul biscotto gigante */
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Singolo biscotto che cade dall'alto */
+.biscotto-cadente {
+    position: absolute;
+    top: -80px;            /* parte da sopra lo schermo */
+    width: 40px;
+    pointer-events: none;
+    animation: biscottoFall 1.5s ease-in forwards;
+}
+
+/* Animazione di caduta verso il basso */
+@keyframes biscottoFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 1;  /* resta visibile quando tocca il fondo */
+    }
+}

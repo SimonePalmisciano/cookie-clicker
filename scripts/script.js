@@ -9,7 +9,10 @@ const bottoneAutoClicker = document.querySelector('#autoClicker');
 const counterBiscotti = document.querySelector('#biscottoCounter');
 
 const biscottoClicker = document.querySelector('#biscottoGiganteClick');
-const bottoneUpgradeInner = bottoneUpgrade.innerHTML;
+
+// CONTENITORE PER LA CASCATA DI BISCOTTI
+const contenitoreCascataBiscotti = document.querySelector('#cascataBiscotti');
+///////////////////////////////////////////////////////////////////////////
 
 let counter = 0;
 
@@ -31,8 +34,11 @@ bottoneAutoClicker.innerHTML = `PROSSIMO AUTOCLICKER UPGRADE COSTO: ${costoAutoC
 // RICHIAMO I BOTTONI CHE HANNO UNA FUNZIONE
 ///////////////////////////////////////////////////////////////////////////
 
-biscottoClicker.addEventListener('click', aumentaCounter);
+// biscottoClicker.addEventListener('click', aumentaCounter);
 bottoneUpgrade.addEventListener('click', upgradesClickerHandler);
 bottoneAutoClicker.addEventListener('click', autoClickerHandler);
 
-console.log(autoClicker);
+biscottoClicker.addEventListener('click', () => {
+    aumentaCounter();          // la tua logica di incremento cookie
+    generaCascataBiscotti();   // effetto grafico di biscotti che cadono
+});

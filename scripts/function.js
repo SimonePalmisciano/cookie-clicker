@@ -1,11 +1,17 @@
 'use strict';
 
+// FUNZIONE CEìHE MOSTRA IL DISPLAY DEL COUNTER CON UN MASSIMO DI 2 NUMERI DECIMALI
 function displayCounter() {
+    // questa formula del math random, il * 100 sposta la virgola di 2 posti verso destra es. 12.346 => 1234.6
+    // poi math.random arrotonda all'intero più vicino es. 1235
+    // il /100 riporta la virgola verso sinistra di 2 posti 12.35
+    counterBiscotti.textContent = `You have ${Math.round(counter * 100) / 100} cookies`;
 
-    counterBiscotti.textContent = `You have ${Math.round(counter*100)/100} cookies`;
 
 }
 
+// aumenta il counter in base al moltiplicatore attualmente attivo
+// in più richiama la funzione displayCounter
 function aumentaCounter() {
 
     counter += moltiplicatore;
@@ -13,15 +19,18 @@ function aumentaCounter() {
 
 }
 
+// ad ogni click sottrae il costo dell'upgrade al counter
+// aumenta il costo dell'upgrade e aumenta il moltiplicatore
+// mostra il costro del prossimo upgrade
 function upgradesClickerHandler() {
 
     if (counter >= costoUpgrade) {
 
         counter = counter - costoUpgrade;
         costoUpgrade *= 2;
-        moltiplicatore++;
+        moltiplicatore *= 1.5;
         displayCounter();
-        bottoneUpgrade.innerHTML = `PROSSIMO UPGRADE COSTO: ${Math.round(costoUpgrade*100)/100}`;
+        bottoneUpgrade.innerHTML = `PROSSIMO UPGRADE COSTO: ${Math.round(costoUpgrade * 100) / 100}`;
 
     } else {
         alert('NON HAI ABBASTANZA COOKIE');
@@ -29,22 +38,65 @@ function upgradesClickerHandler() {
 
 }
 
+// ad ogni click sottrae il costo dell'upgrade dell'autoclicker al counter
+// aumenta il costo dell'upgrade e aumenta il moltiplicatore del autoclicker
+// mostra il costro del prossimo upgrade
 function autoClickerHandler() {
 
     if (counter >= costoAutoClicker) {
 
         counter -= costoAutoClicker;
         costoAutoClicker *= 2;
-        autoClicker++;
+        autoClicker+=3;
         displayCounter()
-        bottoneAutoClicker.innerHTML = `PROSSIMO AUTOCLICKER UPGRADE COSTO: ${Math.round(costoAutoClicker*100)/100}`;
+        bottoneAutoClicker.innerHTML = `PROSSIMO AUTOCLICKER UPGRADE COSTO: ${Math.round(costoAutoClicker * 100) / 100}`;
 
     } else {
         alert('NON HAI ABBASTANZA COOKIE');
     }
 }
 
-setInterval(function() {
-    counter += autoClicker *0.1;
+// ogni 1secondo/6 aumenta il counter di 0.1 in automatico
+setInterval(function () {
+    counter += autoClicker * 0.1;
     displayCounter();
-},1000/6)
+}, 1000 / 6);
+
+
+
+///////////////////////////////////////////////////////////////////////////
+// AGGIUNTA CON AI
+///////////////////////////////////////////////////////////////////////////
+// FUNZIONI GRAFICHE: CASCATA DI BISCOTTI
+///////////////////////////////////////////////////////////////////////////
+function generaCascataBiscotti() {
+    const quantiBiscotti = moltiplicatore; // quanti biscotti cadono a ogni click
+
+    for (let i = 0; i < quantiBiscotti; i++) {
+        creaBiscottoCadente();
+    }
+}
+
+function creaBiscottoCadente() {
+    const biscottoCadente = document.createElement('img');
+    biscottoCadente.src = './img/biscotto-cookie-clicker.png'; // stessa immagine del biscotto gigante
+    biscottoCadente.alt = 'biscotto che cade';
+    biscottoCadente.classList.add('biscotto-cadente');
+
+    // posizione orizzontale casuale (0% - 100%)
+    const posizioneX = Math.random() * 100;
+    biscottoCadente.style.left = posizioneX + '%';
+
+    // piccolo ritardo casuale per effetto “cascata”
+    const ritardoAnimazione = Math.random() * 0.4; // 0s - 0.4s
+    biscottoCadente.style.animationDelay = ritardoAnimazione + 's';
+
+    // quando l'animazione è finita, dopo un po' rimuovo il biscotto
+    biscottoCadente.addEventListener('animationend', () => {
+        setTimeout(() => {
+            biscottoCadente.remove();
+        }, 15000); // 15 secondi dopo essersi depositato
+    });
+
+    contenitoreCascataBiscotti.appendChild(biscottoCadente);
+}
