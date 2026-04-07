@@ -22,6 +22,10 @@ let moltiplicatore = 1;
 let costoAutoClicker = 8;
 let autoClicker = 0;
 
+// LIMITATORE BISCOTTI ANIMATI
+let numeroBiscottiCadenti = 0;         // quanti biscotti animati sono attualmente in vita
+const maxBiscottiCadenti = 60;       // massimo totale di biscotti animati sullo schermo
+const maxBiscottiPerClick = 15;     // massimo biscotti creati per singolo click
 ///////////////////////////////////////////////////////////////////////////
 // RICHIAMO I BOTTONI E I DISPLAY DEGLI UPGRADE
 ///////////////////////////////////////////////////////////////////////////

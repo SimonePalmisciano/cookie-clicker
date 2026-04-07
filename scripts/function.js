@@ -70,9 +70,21 @@ setInterval(function () {
 // FUNZIONI GRAFICHE: CASCATA DI BISCOTTI
 ///////////////////////////////////////////////////////////////////////////
 function generaCascataBiscotti() {
-    const quantiBiscotti = moltiplicatore; // quanti biscotti cadono a ogni click
+    // se il numero dei biscotti cadenti è maggiore o uguale a maxbiscotticadenti allora si ferma e non ne crea altri
+    if (numeroBiscottiCadenti >= maxBiscottiCadenti) {
+        return;
+    }
+
+    // Numero di biscotti in base al moltiplicatore MA con tetto massimo per click
+    const quantiBiscotti = Math.min(moltiplicatore, MAX_BISCOTTI_PER_CLICK);
 
     for (let i = 0; i < quantiBiscotti; i++) {
+
+        // Se creando altro biscotto superiamo il limite totale, ci fermiamo
+        if (numeroBiscottiCadenti >= maxBiscottiCadenti) {
+            break;
+        }
+
         creaBiscottoCadente();
     }
 }
@@ -94,6 +106,8 @@ function creaBiscottoCadente() {
     // quando l'animazione è finita, dopo un po' rimuovo il biscotto
     biscottoCadente.addEventListener('animationend', () => {
         biscottoCadente.remove();  // lo rimuove subito a fine animazione
+        // diminuiamo il contatore senza andare sotto lo zero
+        numeroBiscottiCadenti = Math.max(0, numeroBiscottiCadenti - 1);
     });
     contenitoreCascataBiscotti.appendChild(biscottoCadente);
 }
