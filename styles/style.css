@@ -128,8 +128,11 @@ figure {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
+    80% {
+        opacity: 1;
+    }
     100% {
         transform: translateY(100vh) rotate(360deg);
-        opacity: 1;  /* resta visibile quando tocca il fondo */
+        opacity: 0;  /* svanisce quando arriva in basso */
     }
 }

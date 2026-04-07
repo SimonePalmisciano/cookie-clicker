@@ -47,7 +47,7 @@ function autoClickerHandler() {
 
         counter -= costoAutoClicker;
         costoAutoClicker *= 2;
-        autoClicker+=3;
+        autoClicker += 3;
         displayCounter()
         bottoneAutoClicker.innerHTML = `PROSSIMO AUTOCLICKER UPGRADE COSTO: ${Math.round(costoAutoClicker * 100) / 100}`;
 
@@ -93,10 +93,7 @@ function creaBiscottoCadente() {
 
     // quando l'animazione è finita, dopo un po' rimuovo il biscotto
     biscottoCadente.addEventListener('animationend', () => {
-        setTimeout(() => {
-            biscottoCadente.remove();
-        }, 15000); // 15 secondi dopo essersi depositato
+        biscottoCadente.remove();  // lo rimuove subito a fine animazione
     });
-
     contenitoreCascataBiscotti.appendChild(biscottoCadente);
 }
