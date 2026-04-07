@@ -76,11 +76,13 @@ function generaCascataBiscotti() {
     }
 
     // Numero di biscotti in base al moltiplicatore MA con tetto massimo per click
-    const quantiBiscotti = Math.min(moltiplicatore, MAX_BISCOTTI_PER_CLICK);
+    const quantiBiscotti = Math.max(1,
+        Math.min(Math.floor(moltiplicatore),
+        maxBiscottiPerClick));
 
     for (let i = 0; i < quantiBiscotti; i++) {
 
-        // Se creando altro biscotto superiamo il limite totale, ci fermiamo
+        // Se creando un altro biscotto superiamo il limite totale, ci fermiamo
         if (numeroBiscottiCadenti >= maxBiscottiCadenti) {
             break;
         }

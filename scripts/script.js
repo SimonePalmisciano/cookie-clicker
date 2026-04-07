@@ -23,9 +23,9 @@ let costoAutoClicker = 8;
 let autoClicker = 0;
 
 // LIMITATORE BISCOTTI ANIMATI
-let numeroBiscottiCadenti = 0;         // quanti biscotti animati sono attualmente in vita
-const maxBiscottiCadenti = 60;       // massimo totale di biscotti animati sullo schermo
-const maxBiscottiPerClick = 15;     // massimo biscotti creati per singolo click
+let numeroBiscottiCadenti = 0;      // quanti biscotti animati sono attualmente in vita
+const maxBiscottiCadenti = 80;      // massimo totale di biscotti animati sullo schermo
+const maxBiscottiPerClick = 20;     // massimo biscotti creati per singolo click
 ///////////////////////////////////////////////////////////////////////////
 // RICHIAMO I BOTTONI E I DISPLAY DEGLI UPGRADE
 ///////////////////////////////////////////////////////////////////////////
@@ -38,11 +38,10 @@ bottoneAutoClicker.innerHTML = `PROSSIMO AUTOCLICKER UPGRADE COSTO: ${costoAutoC
 // RICHIAMO I BOTTONI CHE HANNO UNA FUNZIONE
 ///////////////////////////////////////////////////////////////////////////
 
-// biscottoClicker.addEventListener('click', aumentaCounter);
 bottoneUpgrade.addEventListener('click', upgradesClickerHandler);
 bottoneAutoClicker.addEventListener('click', autoClickerHandler);
 
 biscottoClicker.addEventListener('click', () => {
-    aumentaCounter();          // la tua logica di incremento cookie
+    aumentaCounter();
     generaCascataBiscotti();   // effetto grafico di biscotti che cadono
 });
